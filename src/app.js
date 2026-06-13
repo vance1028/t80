@@ -6,6 +6,8 @@ const cors = require('cors');
 const authRouter = require('./routes/auth');
 const projectsRouter = require('./routes/projects');
 const inspectionsRouter = require('./routes/inspections');
+const shelterUnitsRouter = require('./routes/shelterUnits');
+const simulationsRouter = require('./routes/simulations');
 const { sendError } = require('./utils/http');
 
 /** 创建 Express 应用。数据库连接与种子由调用方准备。 */
@@ -21,6 +23,8 @@ function createApp() {
   app.use('/api/auth', authRouter);
   app.use('/api/projects', projectsRouter);
   app.use('/api/inspections', inspectionsRouter);
+  app.use('/api/shelter-units', shelterUnitsRouter);
+  app.use('/api/simulations', simulationsRouter);
 
   app.use((req, res) => sendError(res, 404, '接口不存在'));
 
